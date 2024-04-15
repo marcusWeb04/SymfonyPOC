@@ -1,0 +1,31 @@
+.content{
+    height: 80vh;
+    display: flex;
+    .part-content:nth-child(1){
+        width: 60%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        li{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+    .part-content:nth-child(2){
+        width: 40%;
+        height: 50%;
+        margin-top: 10%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        li{
+            width: 90%;
+            display: flex;
+            justify-content: space-around;
+        }
+    }
+}

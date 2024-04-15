@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block footer_javascripts %}
+    <script type="text/javascript">
+      const chart = new Chart(document.getElementById('gender_repartition'), {
+        type: 'doughnut',
+        data: {{ (gender_repartition|json_encode())|raw }}
+      });
+    </script>
+{% endblock %}
+{% block body %}
+    <h1 class="text-xl text-primary">Welcome to the dashboard</h1>
+
+    <div class="grid grid-cols-2 gap-4">
+        <div>
+            <h2 class="mt-4 mb-2 text-secondary">Last projects</h2>
+            <ul class="list-disc">
+                {% for project in lastProjects %}
+                    <li>
+                        <a href="{{ path('app_project_owner_show', {id: project.owner.id}) }}">
+                            {{ project.owner.name ~ ' - ' ~project.name }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+            <a href="{{ path('app_project_owner_index') }}" class="btn btn-primary btn-sm mt-2">See all projects</a>
+        </div>
+        <div>
+            <h2 class="mt-4 mb-2 text-secondary">Gender repartition</h2>
+            <div class="w-[250px]"><canvas id="gender_repartition"></canvas></div>
+        </div>
+    </div>
+{% endblock %}

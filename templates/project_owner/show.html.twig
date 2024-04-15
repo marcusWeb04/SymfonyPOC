@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}project{% endblock %}
+
+{% block stylesheets %}
+    <link rel='stylesheet' href="{{asset("style/project.css")}}">
+{% endblock %}
+
+{% block body %}
+    <div class="content">
+        <ul class="part-content">
+            <li><p>id</p> <p>{{project_owner.id}}</p> </li>
+            <li><p>FirstName</p> <p>{{project_owner.firstName}}</p></li>
+            <li><p>LastName</p> <p>{{project_owner.lastName}}</p></li>
+            <li><p>City</p> <p>{{project_owner.city}}</p></li>
+            <li><p>Gender</p> <p>{{project_owner.gender.value}}</p></li>
+            <li> <p>Email</p> <p>{{project_owner.email}}</p></li>
+            <li><a href="{{ path('app_project_owner_index') }}">back to list</a></li>
+            <li><a href="{{ path('app_project_owner_edit', {'id': project_owner.id}) }}">edit</a></li>
+
+        </ul>
+        <ul class="part-content">
+            <li><p>id</p> <p>{{project_owner.project.id}}</p> </li>
+            <li><p>name</p> <p>{{project_owner.project.name}}</p></li>
+            <li><p>activity</p> <p>{{project_owner.project.activity}}</p></li>
+            <li><p>presentation</p> <p>{{project_owner.project.presentation}}</p></li>
+        </ul>
+    </div>
+
+    {{ include('project_owner/_delete_form.html.twig') }}
+{% endblock %}

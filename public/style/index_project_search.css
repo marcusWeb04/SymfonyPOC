@@ -1,0 +1,9 @@
+#search_owner {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+#search_owner .mb-6 {
+  text-align: center;
+  width: 20%;
+}/*# sourceMappingURL=index_project_search.css.map */

@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Project owners{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet"  href="{{asset("style/index_project_search.css")}}" >
+{% endblock %}
+
+{% block body %}
+    <h1 class="text-xl text-primary">Project owners</h1>
+
+    <div class="overflow-x-auto">
+        <table class="table table-zebra">
+            {{ form(form) }}
+            <!-- head -->
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>City</th>
+                    <th>Gender</th>
+                    <th>Email</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for project_owner in project_owners %}
+                <tr>
+                    <td>{{ project_owner.id }}</td>
+                    <td>{{ project_owner.firstName }}</td>
+                    <td>{{ project_owner.lastName }}</td>
+                    <td>{{ project_owner.city }}</td>
+                    <td>{{ ('gender.' ~project_owner.gender.value)|trans }}</td>
+                    <td>{{ project_owner.email }}</td>
+                    <td>
+                        <a href="{{ path('app_project_owner_show', {'id': project_owner.id}) }}">show</a>
+                        <a href="{{ path('app_project_owner_edit', {'id': project_owner.id}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <a href="{{ path('app_project_owner_new') }}" class="btn btn-primary mt-2">Create new</a>
+{% endblock %}
